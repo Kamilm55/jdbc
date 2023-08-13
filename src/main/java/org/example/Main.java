@@ -9,16 +9,22 @@ public class Main {
         String user = "root";
         String password = "root";
         Connection connection = DriverManager.getConnection(url,user,password);
-        Statement statement = connection.createStatement();
 
         String query = "SELECT * from employees;";
+        String prevName = "updated employee";
+        int uId = 12;
+        String uName = "Updated";
+        String updateQuery = "DELETE FROM employees WHERE user_id >= 5;";
+        PreparedStatement prStatement = connection.prepareStatement(updateQuery);
+        // set values into ?
+//        prStatement.setString(1,uName);
+//        prStatement.setInt(2,uId);
+//        prStatement.setString(3,prevName);
+        int insertValues = prStatement.executeUpdate(); // inserting and updating data
 
-        String updateQuery = "INSERT INTO employees(user_id,user_lastName) VALUES(5,'Hesenov')";
-        ResultSet resultSet = statement.executeQuery(query);
+        ResultSet resultSet = prStatement.executeQuery(query);// fetching data
 
-//        ResultSet insertValues = statement.executeUpdate(updateQuery);
-
-
+        System.out.println(insertValues + "row affected");
 //        boolean result = resultSet.next();
 //        while (result != false){
 //        String name = resultSet.getString("user_name");
@@ -33,9 +39,10 @@ public class Main {
             while (resultSet.next()){
                 String name = resultSet.getString("user_name");
                 String email = resultSet.getString("user_email");
+                String lastName = resultSet.getString("user_lastName");
                 int id = resultSet.getInt("user_id");
 
-                System.out.println( id  + " | " + name+ " | " + email);
+                System.out.println( id  + " | " + name+ " | " + email + " | " + lastName );
             }
 
         connection.close();
