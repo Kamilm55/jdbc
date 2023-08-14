@@ -23,7 +23,16 @@ public class QueryUtils {
             throw new RuntimeException(ex);
         }
     }
-
+    public static void deleteWithQuery(Connection c,String query){
+        try {
+            PreparedStatement statement = c.prepareStatement(query);
+            int updatedResult = statement.executeUpdate();
+            System.out.println(updatedResult + " rows affected");
+        }
+        catch (Exception ex){
+            throw new RuntimeException(ex);
+        }
+    }
     public static Employee fetchOneDataWithQuery(Connection connection,String query){
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -37,7 +46,6 @@ public class QueryUtils {
             throw new RuntimeException(ex);
         }
     }
-
     public static LinkedList<Employee> fetchMultipleDataWithQuery(Connection connection,String query){
         try {
             PreparedStatement statement = connection.prepareStatement(query);

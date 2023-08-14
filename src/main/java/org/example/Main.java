@@ -8,18 +8,23 @@ import java.util.LinkedList;
 public class Main {
     public static void main(String[] args)  {
         EmployeesDAO dao = new EmployeesDAO();
+//
+//        dao.addOneEmployee(20,"DDDSA" , "Hacibeyov");
+//
+//        Employee employee = dao.getEmployeeWithId(19);
+//        if (employee != null) {
+//            System.out.println("Employee ID: " + employee.getId());
+//            System.out.println("Employee Name: " + employee.getName());
+//            System.out.println("Employee Last Name: " + employee.getLastName());
+//        } else {
+//            System.out.println("No employee found with the specified ID.");
+//        }
 
-        dao.addOneEmployee(20,"DDDSA" , "Hacibeyov");
-
-        Employee employee = dao.getEmployeeWithId(19);
-        if (employee != null) {
-            System.out.println("Employee ID: " + employee.getId());
-            System.out.println("Employee Name: " + employee.getName());
-            System.out.println("Employee Last Name: " + employee.getLastName());
-        } else {
-            System.out.println("No employee found with the specified ID.");
-        }
-        LinkedList<Employee> allEmployees = dao.getAllEmployees();
+//        dao.deleteWithId(20);
+//        dao.getAllEmployees();
+//        LinkedList<Employee> allEmployees = dao.getEmployeesWithColumnLabel(ColumnLabel.ID,"15");
+        dao.deleteAllEmployees();
+        LinkedList<Employee> allEmployees =  dao.getAllEmployees();
 
         if(allEmployees != null)
         for (Employee e : allEmployees)

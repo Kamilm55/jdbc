@@ -1,5 +1,7 @@
 package org.example.DAO;
 ;
+import com.google.protobuf.Enum;
+import org.example.Employee.ColumnLabel;
 import org.example.Employee.Employee;
 import java.sql.*;
 import java.util.LinkedList;
@@ -8,16 +10,27 @@ import java.util.LinkedList;
 public class EmployeesDAO implements EmployeeDAO {
     @Override
     public void deleteAllEmployees() {
-
+        DataBaseUtils.ConnectToDataBase(connection -> {
+            String query = "TRUNCATE TABLE employees";
+            QueryUtils.deleteWithQuery(connection,query);
+        });
     }
 
-    @Override
-    public LinkedList<Employee> getEmployeesWithColumnLabel(String columnLabel) {
-    return null;//Uncompleted
-    }
 
+        @Override
+    public LinkedList<Employee> getEmployeesWithColumnLabel(ColumnLabel columnLabel, String value) {
+       LinkedList<Employee> employees = DataBaseUtils.ConnectToDataBase(connection -> {
+            String query = "SELECT * FROM employees WHERE " + columnLabel.label + " = " + "'"+value+"'";
+           System.out.println(query);
+            return QueryUtils.fetchMultipleDataWithQuery(connection,query);
+        });
+       return employees;
+    }
     public void deleteWithId(int id){
-
+        DataBaseUtils.ConnectToDataBase(connection -> {
+            String query = "DELETE FROM employees WHERE user_id = " + id;
+            QueryUtils.deleteWithQuery(connection,query);
+        });
     }
     public LinkedList<Employee> getAllEmployees(){
         LinkedList<Employee> all = DataBaseUtils.ConnectToDataBase(connection -> {
