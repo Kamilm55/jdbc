@@ -33,7 +33,6 @@ public class EmployeesDAO implements EmployeeDAO {
         });
         return emp;
     }
-
     public void addOneEmployee(int id,String name , String lastName){
               DataBaseUtils.ConnectToDataBase(c ->{ // I give you c variable that is instantiated from Consumer type is Consumer<Connection> and i say (implement) what should method of this obj does.
             //Every time that I give you variable , I say what should method of this obj does.
