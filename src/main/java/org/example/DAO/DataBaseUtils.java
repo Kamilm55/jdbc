@@ -15,7 +15,7 @@ import java.util.function.Function;
 
 public class DataBaseUtils {
     // This is for accessing url name and password of the database
-    public static Connection loadDatabaseConfig() throws SQLException {
+    private static Connection loadDatabaseConfig() throws SQLException {
         // access sensitive data from config file
         Properties prop = new Properties();
         InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties");
