@@ -1,7 +1,21 @@
 package org.example.Employee;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Employee
 {
+    public static LinkedList<Employee> getAllEmployees() {
+        return allEmployees;
+    }
+
+    public static void setAllEmployees(LinkedList<Employee> allEmployees) {
+        Employee.allEmployees = allEmployees;
+    }
+
+    private static LinkedList<Employee> allEmployees;
+
+
     private int id;
 
     public int getId() {
