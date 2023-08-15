@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args)  {
         EmployeesDAO dao = new EmployeesDAO();
 //
-//        dao.addOneEmployee(20,"DDDSA" , "Hacibeyov");
+        dao.addOneEmployee(22,"SA" , "Hacibeyli");
 //
 //        Employee employee = dao.getEmployeeWithId(19);
 //        if (employee != null) {
@@ -23,7 +23,7 @@ public class Main {
 //        dao.deleteWithId(20);
 //        dao.getAllEmployees();
 //        LinkedList<Employee> allEmployees = dao.getEmployeesWithColumnLabel(ColumnLabel.ID,"15");
-        dao.deleteAllEmployees();
+//        dao.deleteAllEmployees();
         LinkedList<Employee> allEmployees =  dao.getAllEmployees();
 
         if(allEmployees != null)

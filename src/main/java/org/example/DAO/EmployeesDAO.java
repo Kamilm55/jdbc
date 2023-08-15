@@ -1,9 +1,8 @@
 package org.example.DAO;
 ;
-import com.google.protobuf.Enum;
 import org.example.Employee.ColumnLabel;
 import org.example.Employee.Employee;
-import java.sql.*;
+
 import java.util.LinkedList;
 
 
@@ -15,8 +14,6 @@ public class EmployeesDAO implements EmployeeDAO {
             QueryUtils.deleteWithQuery(connection,query);
         });
     }
-
-
         @Override
     public LinkedList<Employee> getEmployeesWithColumnLabel(ColumnLabel columnLabel, String value) {
        LinkedList<Employee> employees = DataBaseUtils.ConnectToDataBase(connection -> {
@@ -32,6 +29,19 @@ public class EmployeesDAO implements EmployeeDAO {
             QueryUtils.deleteWithQuery(connection,query);
         });
     }
+
+    @Override
+    public void updateOneEmployeeWithId(int id, ColumnLabel columnLabel, String name, String lastName) {
+        /// Uncompleted
+    }
+//    @Override
+//    public void updateOneEmployeeWithId(int id, ColumnLabel columnLabel, String name, String lastName) {
+//        DataBaseUtils.ConnectToDataBase(connection -> {
+//            String query = "UPDATE employees SET" + columnLabel + " = ? WHERE user_id = ?";
+//             QueryUtils.modifyDataWithQuery(connection,query,id,name,lastName);
+//        });
+//    }
+
     public LinkedList<Employee> getAllEmployees(){
         LinkedList<Employee> all = DataBaseUtils.ConnectToDataBase(connection -> {
             String query = "SELECT * FROM employees";

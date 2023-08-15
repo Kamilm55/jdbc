@@ -13,6 +13,6 @@ public interface EmployeeDAO {
     LinkedList<Employee> getEmployeesWithColumnLabel(ColumnLabel columnLabel, String value);
     void addOneEmployee(int id,String name , String lastName);
     void deleteWithId(int id);
-    void updateOneEmployee(int id,ColumnLabel columnLabel, String value);
+    void updateOneEmployeeWithId(int id, ColumnLabel columnLabel, String name, String lastName);
 
 }
